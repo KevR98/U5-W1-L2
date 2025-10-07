@@ -21,9 +21,8 @@ public class Ordine {
     private double totale;
 
     // METODI
-    public double importoTotale(double costoCoperto) {
+    public void importoTotale(double costoCoperto) {
         this.totale = listaMenu.stream().mapToDouble(item -> item.getPrice()).sum();
         this.totale = this.totale + coperti * costoCoperto;
-        return costoCoperto;
     }
 }
