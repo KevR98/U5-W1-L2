@@ -9,12 +9,13 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 
 @Component
 public class Runner implements CommandLineRunner {
     private final Logger logger = (Logger) LoggerFactory.getLogger(Runner.class);
-    private double costoCoperto;
+    private double costoCoperto = 2.0;
 
     @Override
     public void run(String... args) {
@@ -23,16 +24,18 @@ public class Runner implements CommandLineRunner {
 
         Tavolo tavolo = new Tavolo(1, 4, Stato.OCCUPATO);
 
-        Ordine ordine1 = new Ordine(
-                Arrays.asList(pizzaMargherita, acqua),
-                1,
-                StatoOrdine.IN_CORSO,
-                4,
-                LocalDate.now(),
-                tavolo,
-                0.0
-        );
+        Ordine ordine = new Ordine();
+        ordine.setNumOrdine(1);
+        ordine.setStatoOrdine(StatoOrdine.IN_CORSO);
+        ordine.setCoperti(2);
+        ordine.setOraAcquisizione(LocalDate.from(LocalDateTime.now()));
+        ordine.setListaMenu(Arrays.asList(pizzaMargherita, acqua));
+        ordine.setNumTavolo(tavolo);
 
-        logger.info("Ordine creato: " + ordine1);
+        ordine.importoTotale(costoCoperto);
+
+        logger.info("Ordine creato: " + ordine);
+
+        System.out.println("prova");
     }
 }

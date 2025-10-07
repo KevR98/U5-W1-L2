@@ -1,16 +1,16 @@
 package kevinramil.U5_W1_L2.entities;
 
 import kevinramil.U5_W1_L2.Enum.StatoOrdine;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.util.List;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
+@ToString
 public class Ordine {
     private List<Item> listaMenu;
     private int numOrdine;
