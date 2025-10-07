@@ -5,7 +5,9 @@ import kevinramil.U5_W1_L2.Enum.StatoOrdine;
 import kevinramil.U5_W1_L2.entities.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -13,9 +15,12 @@ import java.time.LocalDateTime;
 import java.util.Arrays;
 
 @Component
+@PropertySource("application.properties")
 public class Runner implements CommandLineRunner {
     private final Logger logger = (Logger) LoggerFactory.getLogger(Runner.class);
-    private double costoCoperto = 2.0;
+
+    @Value("${coperto.costo}")
+    private double costoCoperto;
 
     @Override
     public void run(String... args) {
